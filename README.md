@@ -11,20 +11,30 @@ Répartition des étiquettes dans chacun des sous-ensemble
 ## Méthodes proposées
 ### Run1: baseline (méthode de référence)
 Description de la méthode:
-- descripteurs utilisés
-- classifieur utilisé
+- classifieur utilisé : prédiction de manière aléatoire
 
-### Run2: NOMMETHODE
-### Run3: NOMMETHODE
-### Run4: NOMMETHODE (pour aller plus loin)
+### Run2: SVC 
+Description de la méthode:
+- descripteurs utilisés : TF-IDF
+- classifieur utilisé : SVC 
+
+### Run3: Word2Vec
+Description de la méthode:
+- descripteurs utilisés : Word2Vec
+- classifieur utilisé : 
+
+### Run4: MLP
+Description de la méthode:
+- descripteurs utilisés : By Pair Encoding
+- classifieur utilisé : MLP
 
 ## Résultats
-| Run      | f1 Score |
-| -------- | --------:|
-| baseline |  15,2 |
-| METH 2   |   6,8 |
-| METH 3   |  50,8 |
-| METH 4   |  70,2 |
+| Run                | f1 Score |
+| ------------------ | --------:|
+| baseline           |  15,2    |
+| SVC                |   6,8    |
+| Word2Vec           |  50,8    |
+| MLP                |  70,2    |
 
 ### Analyse de résultats
 Pistes d'analyse:

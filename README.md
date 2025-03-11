@@ -13,7 +13,7 @@ Répartition des étiquettes dans chacun des sous-ensemble
 Description de la méthode:
 - classifieur utilisé : prédiction de manière aléatoire
 
-### Run2: SVC 
+### Run2: TF_IDF 
 Description de la méthode:
 - descripteurs utilisés : TF-IDF
 - classifieur utilisé : SVC 
@@ -21,7 +21,7 @@ Description de la méthode:
 ### Run3: Word2Vec
 Description de la méthode:
 - descripteurs utilisés : Word2Vec
-- classifieur utilisé : 
+- classifieur utilisé : SVC
 
 ### Run4: MLP
 Description de la méthode:
@@ -31,9 +31,9 @@ Description de la méthode:
 ## Résultats
 | Run                | f1 Score |
 | ------------------ | --------:|
-| baseline           |  15,2    |
-| SVC                |   6,8    |
-| Word2Vec           |  50,8    |
+| baseline           |  0.35    |
+| SVC                |  0.88    |
+| Word2Vec           |  0.85    |
 | MLP                |  70,2    |
 
 ### Analyse de résultats

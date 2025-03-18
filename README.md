@@ -67,17 +67,28 @@ Description de la méthode:
 ### Run2: TF_IDF 
 Description de la méthode:
 - descripteurs utilisés : TF-IDF
-- classifieur utilisé : SVC 
+- classifieur utilisé : SVC
+
+On commence par tokeniser chaque mot d’une recette et supprimer les mots outils avec `simple_process`. Ensuite, on transforme chaque recette en vecteurs numériques avec **TF-IDF** (`TfidfVectorizer`) pour quantifier l'importance des mots. Puis, on utilise ces vecteurs pour entraîner un modèle **SVM (Support Vector Machine)**, qui permet de classifier les recettes en fonction de leur type. Enfin, on mesure les performances du modèle à l'aide du **classification report**.
 
 ### Run3: Word2Vec
 Description de la méthode:
 - descripteurs utilisés : Word2Vec
 - classifieur utilisé : SVC
 
+On commence par tokeniser chaque mot d’une recette et supprimer les mots outils. Ensuite, on entraîne un modèle Word2Vec sur les données tokenisées pour transformer les recettes en vecteurs numériques, en capturant les relations sémantiques entre les mots. On calcule la moyenne des vecteurs de chaque recette, ces vecteurs servant d'entrée pour un modèle SVM (Support Vector Machine), qui est entraîné pour classifier les recettes en fonction de leur type. Enfin, on mesure les performances du modèle à l'aide du **classification report**.
+
 ### Run4: MLP
 Description de la méthode:
 - descripteurs utilisés : Word2Vec
 - classifieur utilisé : MLP (avec pytorch)
+
+On commence par tokeniser chaque mot d’une recette et supprimer les mots outils. Pour transformer ces données en vecteurs numériques, on utilise un modèle **Word2Vec** qui capture les relations sémantiques entre les mots. Une fois le modèle entraîné, chaque texte est converti en un vecteur moyen. Ces vecteurs de textes sont ensuite transformés en tenseurs PyTorch pour être utilisés dans un réseau neuronal.
+
+Le modèle choisi est un réseau neuronal à trois couches entièrement connectées, avec une fonction d'activation **ReLU** et une fonction de perte **CrossEntropyLoss**. Le réseau est entraîné sur les données d'entraînement, et ses performances sont évaluées sur le jeu de validation à chaque époque. L'optimisation du modèle est effectuée à l'aide de l'algorithme **Adam**.
+
+Après l'entraînement, les prédictions sont réalisées sur le jeu de test, et les performances du modèle sont mesurées à l'aide de la **précision** et du **classification report**.
+
 
 ## Résultats
 | Run                | Accuracy |    f1 Score    |

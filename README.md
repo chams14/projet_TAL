@@ -101,27 +101,48 @@ Après l'entraînement, les prédictions sont réalisées sur le jeu de test, et
 ### Analyse de résultats
 #### Combien de documents ont un score de 0 ? de 0.5 ? de 1 ? 
 Run 2 TF-IDF : 
-- Documents avec un score entre 0 et 0.5 : 0
-- Documents avec un score de 0.5 : 5
+- Documents avec un score de 0 : 0
+- Documents avec un score inférieur à 0.5 : 5
 - Documents avec un score entre 0.5 et 1 : 1383
 
 Run 3 Word2Vec :
-- Documents avec un score entre 0 et 0.5 : 0
-- Documents avec un score de 0.5 : 8
+- Documents avec un score de 0 : 0
+- Documents avec un score inférieur à 0.5 : 8
 - Documents avec un score entre 0.5 et 1 : 1380
 
 Run 4 MLP : 
-- Documents avec un score entre 0 et 0.5 : 0
-- Documents avec un score de 0.5 : 16
+- Documents avec un score de 0 : 0
+- Documents avec un score inférieur à 0.5 : 16
 - Documents avec un score entre 0.5 et 1 : 1372
 
+##### TF-IDF
+![roc tfidf](figure/tf-idf/roc.png)
+##### Word2Vec
+![roc word2vec](figure/word2vec/roc.png)
+##### MLP
+![roc mlp](figure/pytorch/roc.png)
+
 #### Y-a-t-il des régularités dans les document bien/mal classifiés ?
-On remarque une régularité dans les documents mal et bien classés, ... 
+On remarque une régularité dans les documents bien et mal classifiés. Globalement, les courbes de ROC de chaque approche sont semblable. Pour chaque approche, le score AUC (air sous la courbe) de dessert est toujours à 1, pour entrée sa varie entre 0.91 et 0.93 et pour plat entre 0.94 et 0.95. 
 
-
+Une bonne prédiction se traduit par un score AUC élevé donc on peut en conclure que les résultats son plutôt bon et assez proche pour chaque méthode. 
 
 #### Où est-ce que l'approche se trompe ? (matrice de confusion)
-On remarque que la plus part des modèles se trompe pour les entrée. Ils sont souvent classés entant que Plat Principal.
+On remarque que la plus part des modèles perdent de la précision car ils se trompent sur quelques entrée qu'il classe en plat principal et inversement.
+
+##### TF-IDF
+![roc tfidf](figure/tf-idf/matrix.png)
+
+##### Word2Vec
+![roc word2vec](figure/word2vec/matrix.png)
+
+##### MLP
+![roc mlp](figure/pytorch/matrix.png)
 
 #### Quels sont les descripteurs les plus décisifs 
-En observant les résultats obtenus avec le RUN n°2 et le RUN n°3, les deux ayant été classifié par un modèle SVC, on remarque que le descripteurs TF-IDF semble être plus précis. 
+En observant les résultats obtenus avec le RUN n°2 et le RUN n°3, les deux ayant été classifié par un modèle SVC, on remarque que le descripteurs TF-IDF (0.88) semble être plus précis que Word2Vec (0.86). 
+
+### Conclusion
+Globalement, les scores sont bons mais pourraient être amélioré. Pour ce faire, on pourrait ajouter la racination. C'est à dire réduire les mots à leur racine. De plus pour le réseau de neurone, une modification des paramètres (nombre de couche, de neurone, taux de ) permettrait probablement d'avoir une meilleure accuracy. 
+
+Une approche en utilisant des modèles pré-entraîner (camembert, bert) permettrait potentiellement d'avoir de meilleur résultat. 

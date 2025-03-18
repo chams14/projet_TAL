@@ -82,17 +82,32 @@ Description de la méthode:
 ## Résultats
 | Run                | Accuracy |    f1 Score    |
 | ------------------ | --------:| --------------:|
-| baseline           |   0.39   | 0.34 0.26 0.49 |
+| baseline           |   0.37   | 0.31 0.26 0.46 |
 | TF-IDF             |   0.88   | 0.99 0.75 0.88 |
-| Word2Vec           |   0.86   | 0.98 0.69 0.86 |
-| MLP                |   0.84   | 0.98 0.67 0.84 |
+| Word2Vec           |   0.86   | 0.99 0.69 0.86 |
+| MLP                |   0.84   | 0.98 0.71 0.83 |
 
 ### Analyse de résultats
-Pistes d'analyse:
-* Combien de documents ont un score de 0 ? de 0.5 ? de 1 ? (Courbe ROC)
+#### Combien de documents ont un score de 0 ? de 0.5 ? de 1 ? 
+Run 2 TF-IDF : 
+- Documents avec un score entre 0 et 0.5 : 0
+- Documents avec un score de 0.5 : 5
+- Documents avec un score entre 0.5 et 1 : 1383
+
+Run 3 Word2Vec :
+- Documents avec un score entre 0 et 0.5 : 0
+- Documents avec un score de 0.5 : 8
+- Documents avec un score entre 0.5 et 1 : 1380
+
+Run 4 MLP : 
+- Documents avec un score entre 0 et 0.5 : 0
+- Documents avec un score de 0.5 : 16
+- Documents avec un score entre 0.5 et 1 : 1372
 
 #### Y-a-t-il des régularités dans les document bien/mal classifiés ?
 On remarque une régularité dans les documents mal et bien classés, ... 
+
+
 
 #### Où est-ce que l'approche se trompe ? (matrice de confusion)
 On remarque que la plus part des modèles se trompe pour les entrée. Ils sont souvent classés entant que Plat Principal.
